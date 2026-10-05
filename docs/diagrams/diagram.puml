@@ -1,0 +1,31 @@
+@startuml
+left to right direction
+
+actor "Бухгалтер" as Accountant
+actor "Руководитель" as Manager
+
+rectangle "Система учета доходов и расходов небольшой фирмы" {
+    usecase "Вход в систему" as UC_Login
+    usecase "Добавить операцию" as UC_AddOp
+    usecase "Посмотреть операции" as UC_ViewOp
+    usecase "Посмотреть баланс" as UC_ViewBal
+    usecase "Изменение своих данных" as UC_EditSelf
+    
+    usecase "Регистрация нового пользователя" as UC_RegUser
+    usecase "Изменение данных пользователя" as UC_EditUser
+    usecase "Удаление пользователя" as UC_DelUser
+}
+
+Accountant --> UC_Login
+Accountant --> UC_AddOp
+Accountant --> UC_ViewOp
+Accountant --> UC_ViewBal
+Accountant --> UC_EditSelf
+
+Manager --> UC_Login
+Manager --> UC_ViewOp
+Manager --> UC_ViewBal
+Manager --> UC_RegUser
+Manager --> UC_EditUser
+Manager --> UC_DelUser
+@enduml

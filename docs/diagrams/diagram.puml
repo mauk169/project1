@@ -1,31 +1,43 @@
 @startuml
 left to right direction
+skinparam packageStyle rectangle
 
 actor "Бухгалтер" as Accountant
-actor "Руководитель" as Manager
+actor "Руководитель" as Admin
 
-rectangle "Система учета доходов и расходов небольшой фирмы" {
-    usecase "Вход в систему" as UC_Login
-    usecase "Добавить операцию" as UC_AddOp
-    usecase "Посмотреть операции" as UC_ViewOp
-    usecase "Посмотреть баланс" as UC_ViewBal
-    usecase "Изменение своих данных" as UC_EditSelf
-    
-    usecase "Регистрация нового пользователя" as UC_RegUser
-    usecase "Изменение данных пользователя" as UC_EditUser
-    usecase "Удаление пользователя" as UC_DelUser
+rectangle "Система учёта доходов и расходов" {
+
+  usecase "Вход в систему" as UC_Login_Acc
+  usecase "Главное меню бухгалтера" as UC_Menu_Acc
+  
+  usecase "Вход в систему" as UC_Login_Admin
+  usecase "Главное меню руководителя" as UC_Menu_Admin
+  
+  usecase "Посмотреть операции" as UC_ViewOps
+  usecase "Посмотреть баланс" as UC_ViewBalance
+  
+  usecase "Добавить операцию" as UC_AddOp
+  usecase "Изменить свои данные" as UC_EditSelf
+
+  usecase "Регистрация нового пользователя" as UC_RegUser
+  usecase "Удаление пользователя" as UC_DelUser
+  usecase "Изменение данных пользователя" as UC_EditUser
+
+  Accountant --> UC_Login_Acc
+  UC_Login_Acc --> UC_Menu_Acc
+  
+  UC_Menu_Acc --> UC_AddOp
+  UC_Menu_Acc --> UC_EditSelf
+  UC_Menu_Acc --> UC_ViewOps
+  UC_Menu_Acc --> UC_ViewBalance
+
+  Admin --> UC_Login_Admin
+  UC_Login_Admin --> UC_Menu_Admin
+  
+  UC_Menu_Admin --> UC_RegUser
+  UC_Menu_Admin --> UC_DelUser
+  UC_Menu_Admin --> UC_EditUser
+  UC_Menu_Admin --> UC_ViewOps
+  UC_Menu_Admin --> UC_ViewBalance
 }
-
-Accountant --> UC_Login
-Accountant --> UC_AddOp
-Accountant --> UC_ViewOp
-Accountant --> UC_ViewBal
-Accountant --> UC_EditSelf
-
-Manager --> UC_Login
-Manager --> UC_ViewOp
-Manager --> UC_ViewBal
-Manager --> UC_RegUser
-Manager --> UC_EditUser
-Manager --> UC_DelUser
 @enduml

@@ -23,21 +23,21 @@ rectangle "Система учёта доходов и расходов" {
   usecase "Удаление пользователя" as UC_DelUser
   usecase "Изменение данных пользователя" as UC_EditUser
 
-  Accountant --> UC_Login_Acc
-  UC_Login_Acc --> UC_Menu_Acc
+  Accountant -- UC_Login_Acc
+  UC_Login_Acc -- UC_Menu_Acc
   
-  UC_Menu_Acc --> UC_AddOp
-  UC_Menu_Acc --> UC_EditSelf
-  UC_Menu_Acc --> UC_ViewOps
-  UC_Menu_Acc --> UC_ViewBalance
+  UC_Menu_Acc -- UC_AddOp
+  UC_Menu_Acc -- UC_EditSelf
+  UC_Menu_Acc -- UC_ViewOps
+  UC_Menu_Acc -- UC_ViewBalance
 
-  Admin --> UC_Login_Admin
-  UC_Login_Admin --> UC_Menu_Admin
+  Admin -- UC_Login_Admin
+  UC_Login_Admin -- UC_Menu_Admin
   
-  UC_Menu_Admin --> UC_RegUser
-  UC_Menu_Admin --> UC_DelUser
-  UC_Menu_Admin --> UC_EditUser
-  UC_Menu_Admin --> UC_ViewOps
-  UC_Menu_Admin --> UC_ViewBalance
+  UC_Menu_Admin -- UC_RegUser
+  UC_Menu_Admin -- UC_DelUser
+  UC_Menu_Admin -- UC_EditUser
+  UC_Menu_Admin -- UC_ViewOps
+  UC_Menu_Admin -- UC_ViewBalance
 }
 @enduml

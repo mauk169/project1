@@ -49,3 +49,8 @@ print("World")
 ### 6. ER-диаграмма
 
 ![ER-диаграмма](docs/diagrams/er_diagram.png)
+
+### 7. DATABASE
+
+![DATABASE "finance.db"](src/databaseImage/user_roles.png)
+![](src/databaseImage/users.png)

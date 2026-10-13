@@ -43,3 +43,9 @@
 print("Hello")
 print("World")
 ```
+
+---
+
+### 6. ER-диаграмма
+
+![ER-диаграмма](docs/diagrams/er_diagram.png)

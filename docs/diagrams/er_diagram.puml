@@ -1,0 +1,30 @@
+@startuml
+left to right direction
+skinparam linetype ortho
+
+entity "user_roles" as roles {
+  * role_id : INTEGER <<PK>>
+  --
+  * role_name : TEXT
+}
+
+entity "users" as users {
+  * user_id : INTEGER <<PK>>
+  --
+  * login : TEXT
+  * password : TEXT
+  * user_role : INTEGER <<FK>>
+}
+
+entity "operations" as operations {
+  * operation_id : INTEGER <<PK>>
+  --
+  * operation_type : TEXT
+  * amount : REAL
+  description : TEXT
+  * user_id : INTEGER <<FK>>
+}
+
+roles ||--o{ users
+users ||--o{ operations
+@enduml

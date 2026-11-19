@@ -9,7 +9,6 @@ DB_PATH = "finance.db"
 OUT_DIR = "out"
 
 def fetch_operations_with_authors(db_path: str = DB_PATH) -> list[dict]:
-    """Извлекает операции из БД вместе с данными пользователя (связь по user_id)."""
     conn = sqlite3.connect(db_path)
     cur = conn.cursor()
 
@@ -45,14 +44,12 @@ def fetch_operations_with_authors(db_path: str = DB_PATH) -> list[dict]:
     return records
 
 def save_json(records: list[dict], out_dir: str = OUT_DIR) -> str:
-    """Сохраняет данные в out/data.json с сохранением вложенности."""
     file_path = os.path.join(out_dir, "data.json")
     with open(file_path, "w", encoding="utf-8") as f:
         json.dump(records, f, ensure_ascii=False, indent=2)
     return file_path
 
 def save_csv(records: list[dict], out_dir: str = OUT_DIR) -> str:
-    """Сохраняет данные в out/data.csv в табличном виде."""
     file_path = os.path.join(out_dir, "data.csv")
     fieldnames = [
         "operation_id",
@@ -79,7 +76,6 @@ def save_csv(records: list[dict], out_dir: str = OUT_DIR) -> str:
     return file_path
 
 def save_xml(records: list[dict], out_dir: str = OUT_DIR) -> str:
-    """Сохраняет данные в out/data.xml с вложенными тегами."""
     file_path = os.path.join(out_dir, "data.xml")
     root = ET.Element("operations")
 
@@ -101,7 +97,6 @@ def save_xml(records: list[dict], out_dir: str = OUT_DIR) -> str:
     return file_path
 
 def save_yaml(records: list[dict], out_dir: str = OUT_DIR) -> str:
-    """Сохраняет данные в out/data.yaml."""
     file_path = os.path.join(out_dir, "data.yaml")
     with open(file_path, "w", encoding="utf-8") as f:
         yaml.safe_dump(records, f, allow_unicode=True, sort_keys=False)
